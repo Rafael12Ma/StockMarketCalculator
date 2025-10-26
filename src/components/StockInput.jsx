@@ -6,7 +6,7 @@ export default function StockInput({
 }) {
   return (
     <>
-      <div id="user-input">
+      <section id="user-input">
         <div className="input-group">
           <label htmlFor="">Stock's Name</label>
           <input
@@ -15,9 +15,10 @@ export default function StockInput({
             onChange={(event) => handleChange("stockName", event.target.value)}
             required
             type="text"
-            name=""
-            id=""
           />
+        </div>
+        <div className="input-group">
+          {" "}
           <label htmlFor="">Stock' cur Value</label>
           <input
             disabled={buttonIsClicked}
@@ -25,9 +26,9 @@ export default function StockInput({
             onChange={(event) => handleChange("stockValue", event.target.value)}
             required
             type="text"
-            name=""
-            id=""
           />
+        </div>
+        <div className="input-group">
           <label htmlFor="">Stock's Quantity</label>
           <input
             disabled={buttonIsClicked}
@@ -37,13 +38,22 @@ export default function StockInput({
             }
             required
             type="text"
-            name=""
-            id=""
           />
-
-          {buttonState}
         </div>
-      </div>
+        <div className="input-group">
+          <label htmlFor="">Stock's Bought Value</label>
+          <input
+            disabled={buttonIsClicked}
+            value={values.stockBoughtValue}
+            onChange={(event) =>
+              handleChange("stockBoughtValue", event.target.value)
+            }
+            required
+            type="text"
+          />
+        </div>
+        {buttonState}
+      </section>
     </>
   );
 }

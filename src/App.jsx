@@ -11,6 +11,7 @@ function App() {
     stockName: "",
     stockValue: "",
     stockQuantity: "",
+    stockBoughtValue: "",
   });
 
   let buttonState = <button onClick={HandleClick}>Save</button>;

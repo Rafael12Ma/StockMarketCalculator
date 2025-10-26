@@ -29,44 +29,72 @@ body {
 #header h1 {
   font-size: 1.5rem;
 }
-
 #user-input {
-  padding: 1rem;
-  max-width: 30rem;
+  padding: 2rem;
+  max-width: 40rem;
   margin: 2rem auto;
-  border-radius: 4px;
-  background: linear-gradient(180deg, #307e6c, #2b996d);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #0dffc7, #2b996d);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
+/* make each label + input line up horizontally */
 .input-group {
   display: flex;
-  justify-content: space-evenly;
-  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
+/* label style */
 #user-input label {
-  display: block;
-  margin-bottom: 0.25rem;
+  flex: 1; /* label takes 1 part of the row */
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 0.5rem;
+  font-size: 1.2rem !important;
   font-weight: bold;
   text-transform: uppercase;
+  color: #ffffff;
+  text-align: right;
 }
 
+/* input style */
 #user-input input {
-  width: 100%;
-  padding: 0.5rem;
+  flex: 2; /* input takes 2 parts of the row */
+  padding: 0.8rem 1rem;
   border: 1px solid #76c0ae;
-  border-radius: 0.25rem;
-  background-color: transparent;
-  color: #c2e9e0;
+  border-radius: 0.4rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
+#user-input input:focus {
+  outline: none;
+  border-color: #0dffc7;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* button on its own centered line */
 #user-input button {
+  align-self: center;
   background-color: #1a1f1d;
   color: wheat;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+#user-input button:hover {
+  background-color: #2a2f2d;
+  transform: scale(1.05);
+}
+
 #result {
   max-width: 50rem;
   margin: 2rem auto;
@@ -99,4 +127,12 @@ body {
   font-size: 90%;
   text-align: center;
   text-decoration: overline;
+}
+
+#won {
+  color: green;
+}
+
+#lost {
+  color: red;
 }
