@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/StockMarketCalculator/static/css/main.853c34f1.css",
-    "main.js": "/StockMarketCalculator/static/js/main.f2eb4b68.js",
+    "main.css": "/StockMarketCalculator/static/css/main.eda1bd43.css",
+    "main.js": "/StockMarketCalculator/static/js/main.d7844135.js",
     "static/js/453.60c639f0.chunk.js": "/StockMarketCalculator/static/js/453.60c639f0.chunk.js",
     "static/media/image.png": "/StockMarketCalculator/static/media/image.bfef5ab2063b729d95d9.png",
     "index.html": "/StockMarketCalculator/index.html",
-    "main.853c34f1.css.map": "/StockMarketCalculator/static/css/main.853c34f1.css.map",
-    "main.f2eb4b68.js.map": "/StockMarketCalculator/static/js/main.f2eb4b68.js.map",
+    "main.eda1bd43.css.map": "/StockMarketCalculator/static/css/main.eda1bd43.css.map",
+    "main.d7844135.js.map": "/StockMarketCalculator/static/js/main.d7844135.js.map",
     "453.60c639f0.chunk.js.map": "/StockMarketCalculator/static/js/453.60c639f0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.853c34f1.css",
-    "static/js/main.f2eb4b68.js"
+    "static/css/main.eda1bd43.css",
+    "static/js/main.d7844135.js"
   ]
 }
