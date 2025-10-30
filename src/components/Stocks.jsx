@@ -1,0 +1,18 @@
+export default function Stocks({ stocks }) {
+  return (
+    <section id="stocksList">
+      <h2>Your Stocks</h2>
+      {stocks.length === 0 ? (
+        <p>No stocks added yet.</p>
+      ) : (
+        <ul>
+          {stocks.map((stock) => (
+            <li key={stock.id}>
+              <strong>{stock.name}</strong> — ${stock.price.toFixed(2)}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}

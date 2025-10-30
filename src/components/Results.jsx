@@ -6,6 +6,7 @@ export default function Results({ values, buttonIsClicked }) {
   moneychanged = moneychanged.toFixed(2);
   let moneyPrecent = (moneychanged / values.stockBoughtValue) * 100;
   moneyPrecent = moneyPrecent.toFixed(2);
+  let style = haveWonMoney ? "won" : "lost";
   return (
     <div id="result">
       {buttonIsClicked ? (
@@ -20,9 +21,9 @@ export default function Results({ values, buttonIsClicked }) {
 
           <p>
             Your money has {haveWonMoney ? "increased" : "dicreased"} by{" "}
-            <span id={haveWonMoney ? "won" : "lost"}>{moneyPrecent}%,</span> you
-            have {haveWonMoney ? "gained" : "lost"}{" "}
-            <span id={haveWonMoney ? "won" : "lost"}>
+            <span id={style}>{moneyPrecent}%,</span> you have{" "}
+            {haveWonMoney ? "gained" : "lost"}{" "}
+            <span id={style}>
               {(moneychanged * values.stockQuantity).toFixed(2)}${" "}
               {haveWonMoney ? "profit." : "loss."}
             </span>
