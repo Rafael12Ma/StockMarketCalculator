@@ -3,9 +3,14 @@ import Header from "./components/Header";
 import Table from "./components/Table";
 import StockInput from "./components/StockInput";
 import Results from "./components/Results";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import PlantInput from "./comptest/PlantInput";
+import Plants from "./comptest/Plants";
 
 function App() {
+  //Try of refs and state double input on list mapping
+
+  //
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
   const [values, setValues] = useState({
     stockName: "",
@@ -54,6 +59,9 @@ function App() {
   return (
     <div id="body">
       <Header />
+      {/*  */}
+
+      {/*  */}
       <StockInput
         buttonIsClicked={buttonIsClicked}
         buttonState={buttonState}
