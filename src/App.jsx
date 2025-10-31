@@ -3,9 +3,10 @@ import Header from "./components/Header";
 import Table from "./components/Table";
 import StockInput from "./components/StockInput";
 import Results from "./components/Results";
-import { useRef, useState } from "react";
-import TaskInput from "./comptest/TaskInput";
-import Tasks from "./comptest/Tasks";
+import { useState } from "react";
+// import TaskInput from "./comptest/TaskInput";
+// import Tasks from "./comptest/Tasks";
+// import { useRef } from "react";
 
 function App() {
   //Try of refs and state double input on list mapping

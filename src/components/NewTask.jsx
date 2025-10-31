@@ -13,9 +13,8 @@ export default function NewTask({ label, handleAdd, refStock, refPrice }) {
           type="number"
           placeholder="Enter stock current price..."
         />
-      </p>{" "}
+      </p>
       <p>
-        {" "}
         <button
           onClick={() =>
             handleAdd(refStock.current.value, refPrice.current.value)

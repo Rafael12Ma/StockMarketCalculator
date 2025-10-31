@@ -1,4 +1,4 @@
-export default function Stocks({ stocks }) {
+export default function Stocks({ stocks, onDelete }) {
   return (
     <section id="stocksList">
       <h2>Your Stocks</h2>
@@ -9,6 +9,7 @@ export default function Stocks({ stocks }) {
           {stocks.map((stock) => (
             <li key={stock.id}>
               <strong>{stock.name}</strong> — ${stock.price.toFixed(2)}
+              <button onClick={() => onDelete(stock.id)}>Delete</button>
             </li>
           ))}
         </ul>
