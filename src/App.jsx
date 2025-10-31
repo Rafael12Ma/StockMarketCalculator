@@ -4,11 +4,32 @@ import Table from "./components/Table";
 import StockInput from "./components/StockInput";
 import Results from "./components/Results";
 import { useRef, useState } from "react";
-import PlantInput from "./comptest/PlantInput";
-import Plants from "./comptest/Plants";
+import TaskInput from "./comptest/TaskInput";
+import Tasks from "./comptest/Tasks";
 
 function App() {
   //Try of refs and state double input on list mapping
+  // const taskRef = useRef();
+  // const descRef = useRef();
+  // const [tasks, setTasks] = useState({
+  //   sumTasks: [],
+  // });
+
+  // function handleAddTask(enteredTask, enteredDesc) {
+  //   if (!enteredDesc.trim() || !enteredTask.trim()) return;
+
+  //   const newVar = {
+  //     task: enteredTask,
+  //     desc: enteredDesc,
+  //     id: Math.random(),
+  //   };
+  //   setTasks((prev) => ({
+  //     ...prev,
+  //     sumTasks: [...prev.sumTasks, newVar],
+  //   }));
+  //   taskRef.current.value = "";
+  //   descRef.current.value = "";
+  // }
 
   //
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
@@ -60,7 +81,12 @@ function App() {
     <div id="body">
       <Header />
       {/*  */}
-
+      {/* <TaskInput
+        handleAddTask={handleAddTask}
+        taskRef={taskRef}
+        descRef={descRef}
+      />
+      <Tasks tasks={tasks.sumTasks} /> */}
       {/*  */}
       <StockInput
         buttonIsClicked={buttonIsClicked}
