@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
-
 export default function StockInput({
   handleChange,
   values,
   buttonState,
   buttonIsClicked,
 }) {
-  const [count, setCount] = useState(0);
-
-  function handleCount() {
-    setCount((prev) => prev + 1);
-  }
-
   return (
     <>
       <section id="user-input">

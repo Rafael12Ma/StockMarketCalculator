@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import imagelogo from "../assets/image.png";
 import NewTask from "./NewTask";
 import Stocks from "./Stocks";
@@ -36,11 +36,18 @@ export default function Header() {
     }));
   }
 
+  const [isClicked, setIsClicked] = useState(false);
+
+  useEffect(() => {
+    // if (isClicked) {
+    console.log("its clicked right now");
+    // }
+  }, [isClicked]);
+
   return (
     <header id="header">
       <h1>Stock Analytics</h1>
       <img src={imagelogo} alt="Stock market" />
-
       <NewTask
         refStock={refStock}
         refPrice={refPrice}
