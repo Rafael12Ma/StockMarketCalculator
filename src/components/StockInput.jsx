@@ -12,16 +12,6 @@ export default function StockInput({
     setCount((prev) => prev + 1);
   }
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("Tick");
-    }, 1000);
-    console.log("END");
-    return () => {
-      clearInterval(interval);
-    };
-  }, [count]);
-
   return (
     <>
       <section id="user-input">
@@ -71,8 +61,6 @@ export default function StockInput({
           />
         </div>
         {buttonState}
-        <button onClick={handleCount}>+</button>
-        <p>{count}</p>
       </section>
     </>
   );

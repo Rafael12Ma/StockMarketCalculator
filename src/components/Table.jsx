@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { data, formatter } from "../data";
 
 export default function Table() {
-  //   console.log(data);
-
+  console.log("Table running");
+  useEffect(() => {
+    console.log("useEffect running");
+  });
   return (
     <table id="result">
       <thead>

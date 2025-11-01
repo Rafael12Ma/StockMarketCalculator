@@ -1,7 +1,7 @@
 export const data = [{
   name: "Innodata",
   value: 77,
-  quantity: 4.22,
+  quantity: 9.586,
 }, {
   name: "Calestica",
   value: 298,
@@ -13,7 +13,7 @@ export const data = [{
 }, {
   name: "Canoo",
   value: 0.001,
-  quantity: 10
+  quantity: 1.06
 }];
 
 
