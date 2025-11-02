@@ -3,7 +3,8 @@ import Header from "./components/Header";
 import Table from "./components/Table";
 import StockInput from "./components/StockInput";
 import Results from "./components/Results";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Places from "./components/Places";
 // import TaskInput from "./comptest/TaskInput";
 // import Tasks from "./comptest/Tasks";
 // import { useRef } from "react";
@@ -78,9 +79,26 @@ function App() {
     });
   }
 
+  const [placesBackend, setPlacesBackend] = useState([]);
+
+  useEffect(() => {
+    async function fetchPlaces() {
+      const response = await fetch("http://localhost:3000/places");
+      const resData = await response.json();
+      setPlacesBackend(resData.places);
+    }
+    fetchPlaces();
+  }, []);
+
   return (
     <div id="body">
       <Header />
+      <Places
+        title="Available Places"
+        places={placesBackend}
+        // fallbackText="No places available."
+        // onSelectPlace={onSelectPlace}
+      />
       {/*  */}
       {/* <TaskInput
         handleAddTask={handleAddTask}

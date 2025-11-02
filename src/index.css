@@ -177,3 +177,72 @@ body {
 #lost {
   color: red;
 }
+
+.stocks-section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.stocks-section h2 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+.stocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.stock-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stock-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stock-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* optional limit */
+  object-fit: contain; /* show full image */
+  background-color: #f8f8f8; /* subtle background if transparent */
+  border-bottom: 1px solid #ddd;
+}
+
+.stock-info {
+  padding: 1rem;
+}
+
+.stock-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.stock-price {
+  color: #007bff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+.stock-price.positive {
+  color: #16a34a; /* green */
+}
+
+.stock-price.negative {
+  color: #dc2626; /* red */
+}
