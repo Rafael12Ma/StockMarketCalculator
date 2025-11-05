@@ -5,6 +5,7 @@ import StockInput from "./components/StockInput";
 import Results from "./components/Results";
 import { useEffect, useState } from "react";
 import Places from "./components/Places";
+
 // import TaskInput from "./comptest/TaskInput";
 // import Tasks from "./comptest/Tasks";
 // import { useRef } from "react";
@@ -34,6 +35,8 @@ function App() {
   // }
 
   //
+
+  const [isFetching, setIsFetching] = useState(false);
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
   const [values, setValues] = useState({
     stockName: "",
@@ -79,13 +82,15 @@ function App() {
     });
   }
 
-  const [placesBackend, setPlacesBackend] = useState([]);
+  const [stocksBackend, setStocksBackend] = useState([]);
 
   useEffect(() => {
     async function fetchPlaces() {
-      const response = await fetch("http://localhost:3000/places");
+      setIsFetching(true);
+      const response = await fetch("http://localhost:3000/stocks");
       const resData = await response.json();
-      setPlacesBackend(resData.places);
+      setStocksBackend(resData.places);
+      setIsFetching(false);
     }
     fetchPlaces();
   }, []);
@@ -94,8 +99,10 @@ function App() {
     <div id="body">
       <Header />
       <Places
-        title="Available Places"
-        places={placesBackend}
+        isLoading={isFetching}
+        loadingText={"Fetching stock data..."}
+        fallbackText="No stocks available!"
+        stocks={stocksBackend}
         // fallbackText="No places available."
         // onSelectPlace={onSelectPlace}
       />
