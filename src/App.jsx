@@ -6,6 +6,7 @@ import Results from "./components/Results";
 import { useEffect, useState } from "react";
 import Places from "./components/Places";
 import Error from "./components/Error";
+import { useStock } from "./hooks/useStock";
 
 // import TaskInput from "./comptest/TaskInput";
 // import Tasks from "./comptest/Tasks";
@@ -82,33 +83,7 @@ function App() {
     });
   }
 
-  const [stocksBackend, setStocksBackend] = useState([]);
-  const [isFetching, setIsFetching] = useState(false);
-  const [error, setError] = useState();
-
-  useEffect(() => {
-    async function fetchPlaces() {
-      setIsFetching(true);
-
-      try {
-        const response = await fetch("http://localhost:3000/stocks");
-        const resData = await response.json();
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch stocks.");
-        }
-        setStocksBackend(resData.places);
-      } catch (error) {
-        setError({
-          message:
-            error.message || "Could not fetch places, please try again later.",
-        });
-      }
-      setIsFetching(false);
-    }
-
-    fetchPlaces();
-  }, []);
+  const { stocksBackend, isFetching, error } = useStock();
 
   if (error) {
     return <Error title="An error occured!" message={error.message} />;
