@@ -212,6 +212,11 @@ body {
 .stock-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.stock-card:active {
+  width: 110%;
 }
 
 .stock-image {

@@ -1,12 +1,12 @@
 import "./App.css";
 import Header from "./components/Header";
-import Table from "./components/Table";
 import StockInput from "./components/StockInput";
 import Results from "./components/Results";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import Places from "./components/Places";
 import Error from "./components/Error";
 import { useStock } from "./hooks/useStock";
+import Login from "./login/Login";
 
 // import TaskInput from "./comptest/TaskInput";
 // import Tasks from "./comptest/Tasks";
@@ -37,7 +37,20 @@ function App() {
   // }
 
   //
+  // Handling refs for form
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+  function handleLogin(event) {
+    event.preventDefault();
+    const username = usernameRef.current.value;
 
+    const password = passwordRef.current.value;
+    usernameRef.current.value = "";
+    passwordRef.current.value = "";
+    console.log(username, password);
+  }
+
+  //
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
   const [values, setValues] = useState({
     stockName: "",
@@ -91,6 +104,11 @@ function App() {
 
   return (
     <div id="body">
+      <Login
+        handleLogin={handleLogin}
+        passwordRef={passwordRef}
+        usernameRef={usernameRef}
+      />
       <Header />
       <Places
         error={error}
@@ -115,7 +133,6 @@ function App() {
         handleChange={handleChange}
         values={values}
       />
-      <Table />
       {message}
     </div>
   );

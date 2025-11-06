@@ -36,14 +36,6 @@ export default function Header() {
     }));
   }
 
-  const [isClicked, setIsClicked] = useState(false);
-
-  useEffect(() => {
-    // if (isClicked) {
-    console.log("its clicked right now");
-    // }
-  }, [isClicked]);
-
   return (
     <header id="header">
       <h1>Stock Analytics</h1>
