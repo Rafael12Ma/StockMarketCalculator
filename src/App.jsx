@@ -38,17 +38,6 @@ function App() {
 
   //
   // Handling refs for form
-  const usernameRef = useRef();
-  const passwordRef = useRef();
-  function handleLogin(event) {
-    event.preventDefault();
-    const username = usernameRef.current.value;
-
-    const password = passwordRef.current.value;
-    usernameRef.current.value = "";
-    passwordRef.current.value = "";
-    console.log(username, password);
-  }
 
   //
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
@@ -104,12 +93,8 @@ function App() {
 
   return (
     <div id="body">
-      <Login
-        handleLogin={handleLogin}
-        passwordRef={passwordRef}
-        usernameRef={usernameRef}
-      />
       <Header />
+      <Login />
       <Places
         error={error}
         isLoading={isFetching}
