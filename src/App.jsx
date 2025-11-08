@@ -2,44 +2,13 @@ import "./App.css";
 import Header from "./components/Header";
 import StockInput from "./components/StockInput";
 import Results from "./components/Results";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Places from "./components/Places";
 import Error from "./components/Error";
 import { useStock } from "./hooks/useStock";
 import Login from "./login/Login";
 
-// import TaskInput from "./comptest/TaskInput";
-// import Tasks from "./comptest/Tasks";
-// import { useRef } from "react";
-
 function App() {
-  //Try of refs and state double input on list mapping
-  // const taskRef = useRef();
-  // const descRef = useRef();
-  // const [tasks, setTasks] = useState({
-  //   sumTasks: [],
-  // });
-
-  // function handleAddTask(enteredTask, enteredDesc) {
-  //   if (!enteredDesc.trim() || !enteredTask.trim()) return;
-
-  //   const newVar = {
-  //     task: enteredTask,
-  //     desc: enteredDesc,
-  //     id: Math.random(),
-  //   };
-  //   setTasks((prev) => ({
-  //     ...prev,
-  //     sumTasks: [...prev.sumTasks, newVar],
-  //   }));
-  //   taskRef.current.value = "";
-  //   descRef.current.value = "";
-  // }
-
-  //
-  // Handling refs for form
-
-  //
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
   const [values, setValues] = useState({
     stockName: "",
@@ -101,17 +70,7 @@ function App() {
         loadingText={"Fetching stock data..."}
         fallbackText="No stocks available!"
         stocks={stocksBackend}
-        // fallbackText="No places available."
-        // onSelectPlace={onSelectPlace}
       />
-      {/*  */}
-      {/* <TaskInput
-        handleAddTask={handleAddTask}
-        taskRef={taskRef}
-        descRef={descRef}
-      />
-      <Tasks tasks={tasks.sumTasks} /> */}
-      {/*  */}
       <StockInput
         buttonIsClicked={buttonIsClicked}
         buttonState={buttonState}
