@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
+import classes from "./HomePage.module.css";
+
 export default function HomePage() {
   return (
-    <>
-      <h1>Homepage</h1>
-    </>
+    <div className={classes.homepage}>
+
+      <Link to="/stocks">
+        <button>Get started</button>
+      </Link>
+    </div>
   );
 }
