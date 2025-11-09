@@ -7,8 +7,25 @@ import Places from "./components/Places";
 import Error from "./components/Error";
 import { useStock } from "./hooks/useStock";
 import Login from "./login/Login";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Stockares from "./pages/Stockares";
+import RootLayout from "./pages/RootLayout";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        { path: "/", element: <HomePage /> },
+        { path: "/stocks", element: <Stockares /> },
+      ],
+    },
+  ]);
+
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
   const [values, setValues] = useState({
     stockName: "",
@@ -61,24 +78,26 @@ function App() {
   }
 
   return (
-    <div id="body">
-      <Header />
-      <Login />
-      <Places
-        error={error}
-        isLoading={isFetching}
-        loadingText={"Fetching stock data..."}
-        fallbackText="No stocks available!"
-        stocks={stocksBackend}
-      />
-      <StockInput
-        buttonIsClicked={buttonIsClicked}
-        buttonState={buttonState}
-        handleChange={handleChange}
-        values={values}
-      />
-      {message}
-    </div>
+    <RouterProvider router={router}>
+      <div id="body">
+        <Header />
+        <Login />
+        <Places
+          error={error}
+          isLoading={isFetching}
+          loadingText={"Fetching stock data..."}
+          fallbackText="No stocks available!"
+          stocks={stocksBackend}
+        />
+        <StockInput
+          buttonIsClicked={buttonIsClicked}
+          buttonState={buttonState}
+          handleChange={handleChange}
+          values={values}
+        />
+        {message}
+      </div>
+    </RouterProvider>
   );
 }
 
