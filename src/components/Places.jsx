@@ -1,5 +1,5 @@
 export default function Places({
-  stocks,
+  stocks = [],
   isLoading,
   loadingText,
   fallbackText,
