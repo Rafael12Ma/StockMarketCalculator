@@ -1,27 +1,30 @@
+import { Link } from "react-router-dom";
+
 export default function StocksPageTest({ stocks }) {
-  console.log(stocks);
   return (
     <>
       <ul className="stocks-grid">
         {stocks.map((stock) => (
-          <li className="stock-card" key={stock.id}>
-            <img
-              src={`http://localhost:3000/${stock.imageSrc}`}
-              alt={stock.name}
-              className="stock-image"
-            />
-            <div className="stock-info">
-              <h3>{stock.name}</h3>
-              <p
-                className={`stock-price ${
-                  stock.currValue >= stock.boughtValue.price
-                    ? "positive"
-                    : "negative"
-                }`}
-              >
-                ${stock.currValue}
-              </p>
-            </div>
+          <li key={stock.id} className="stock-card">
+            <Link to={`/stocks/${stock.id}`}>
+              <img
+                src={`http://localhost:3000/${stock.imageSrc}`}
+                alt={stock.name}
+                className="stock-image"
+              />
+              <div className="stock-info">
+                <h3>{stock.name}</h3>
+                <p
+                  className={`stock-price ${
+                    stock.currValue >= stock.boughtValue
+                      ? "positive"
+                      : "negative"
+                  }`}
+                >
+                  ${stock.currValue}
+                </p>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>

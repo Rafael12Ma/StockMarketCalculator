@@ -5,7 +5,12 @@ import HomePage from "./pages/HomePage";
 import Stockares, { StocksLoader } from "./pages/Stockares";
 import RootLayout from "./pages/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
-import StockDetails from "./pages/StockDetails";
+import StockDetails, { detailLoader } from "./pages/StockDetails";
+import SignInPage from "./components/SignInPage";
+import SignUpPage from "./components/SignUpPage";
+import LogOutPage from "./components/LogOutPage";
+import { loaderDetails } from "./pages/StockDetails";
+import NewStock, { action } from "./pages/NewStock";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,7 +25,27 @@ function App() {
           element: <Stockares />,
           loader: StocksLoader,
         },
-        { path: "stocks/:stockId", element: <StockDetails /> },
+        {
+          path: "stocks/:stockId",
+          element: <StockDetails />,
+          loader: detailLoader,
+        },
+        {
+          path: "/signIn",
+          element: <SignInPage />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "/signUp",
+          element: <SignUpPage />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "/logOut",
+          element: <LogOutPage />,
+          errorElement: <ErrorPage />,
+        },
+        { path: "new", element: <NewStock />, action: action },
       ],
     },
   ]);

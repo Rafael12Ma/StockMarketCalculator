@@ -21,14 +21,19 @@ export default function Stockares() {
   return (
     <>
       <h1>Stocks</h1>
-      <ul>
+      {/* <ul>
         {PRODUCTS.map((prod) => (
           <li key={prod.title}>
             <Link to={prod.title}>{prod.title}</Link>
           </li>
         ))}
-      </ul>
-      <StocksPageTest stocks={stocks} />
+      </ul> */}
+      <div>
+        <StocksPageTest stocks={stocks} />
+      </div>
+      <h1>
+        <Link to="/new">New Stock form</Link>
+      </h1>{" "}
     </>
   );
 }

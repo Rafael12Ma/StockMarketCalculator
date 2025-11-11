@@ -17,7 +17,28 @@ export default function MainNavigationBar() {
           to="stocks"
           className={({ isActive }) => (isActive ? classes.active : undefined)}
         >
-          Stocks
+          Portfolio
+        </NavLink>
+        <NavLink
+          to="/signIn"
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+          end
+        >
+          SignIn
+        </NavLink>
+        <NavLink
+          to="/signUp"
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+          end
+        >
+          SignUp
+        </NavLink>
+        <NavLink
+          to="/logOut"
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+          end
+        >
+          LogOut
         </NavLink>
       </nav>
     </>

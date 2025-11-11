@@ -1,3 +1,5 @@
+import { Form } from "react-router-dom";
+
 export default function StockInput({
   handleChange,
   values,
@@ -5,55 +7,55 @@ export default function StockInput({
   buttonIsClicked,
 }) {
   return (
-    <>
-      <section id="user-input">
-        <div className="input-group">
-          <label htmlFor="">Stock's Name</label>
-          <input
-            disabled={buttonIsClicked}
-            value={values.stockName}
-            onChange={(event) => handleChange("stockName", event.target.value)}
-            required
-            type="text"
-          />
-        </div>
-        <div className="input-group">
-          {" "}
-          <label htmlFor="">Stock' cur Value</label>
-          <input
-            disabled={buttonIsClicked}
-            value={values.stockValue}
-            onChange={(event) => handleChange("stockValue", event.target.value)}
-            required
-            type="text"
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="">Stock's Quantity</label>
-          <input
-            disabled={buttonIsClicked}
-            value={values.stockQuantity}
-            onChange={(event) =>
-              handleChange("stockQuantity", event.target.value)
-            }
-            required
-            type="text"
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="">Stock's Bought Value</label>
-          <input
-            disabled={buttonIsClicked}
-            value={values.stockBoughtValue}
-            onChange={(event) =>
-              handleChange("stockBoughtValue", event.target.value)
-            }
-            required
-            type="text"
-          />
-        </div>
-        {buttonState}
-      </section>
-    </>
+    <Form method="post" id="user-input">
+      <div className="input-group">
+        <label>Stock's Name</label>
+        <input
+          disabled={buttonIsClicked}
+          value={values.stockName}
+          onChange={(e) => handleChange("stockName", e.target.value)}
+          required
+          type="text"
+          name="stockName"
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Stock's Current Value</label>
+        <input
+          disabled={buttonIsClicked}
+          value={values.stockCurValue}
+          onChange={(e) => handleChange("stockCurValue", e.target.value)}
+          required
+          type="number"
+          name="stockCurValue"
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Stock's Quantity</label>
+        <input
+          disabled={buttonIsClicked}
+          value={values.stockQuantity}
+          onChange={(e) => handleChange("stockQuantity", e.target.value)}
+          required
+          type="number"
+          name="stockQuantity"
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Stock's Bought Value</label>
+        <input
+          disabled={buttonIsClicked}
+          value={values.stockBoughtValue}
+          onChange={(e) => handleChange("stockBoughtValue", e.target.value)}
+          required
+          type="number"
+          name="stockBoughtValue"
+        />
+      </div>
+      {buttonState}
+    </Form>
   );
 }

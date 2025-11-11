@@ -5,7 +5,7 @@ export default function ErrorPage() {
     <>
       <h1>An error has occured.</h1>
       <Link to="/">
-        <button>go stocks</button>
+        <button>go to stocks</button>
       </Link>
     </>
   );
