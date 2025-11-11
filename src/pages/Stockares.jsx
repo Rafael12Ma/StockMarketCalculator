@@ -2,25 +2,11 @@ import { Link, useLoaderData } from "react-router-dom";
 import StocksPageTest from "./StocksPageTest";
 
 export default function Stockares() {
-  const PRODUCTS = [
-    {
-      title: "stock-1",
-      price: 70,
-    },
-    {
-      title: "stock-2",
-      price: 60,
-    },
-    {
-      title: "stock-3",
-      price: 80,
-    },
-  ];
   const stocks = useLoaderData();
 
   return (
     <>
-      <h1>Stocks</h1>
+      <h1>My Stocks</h1>
       {/* <ul>
         {PRODUCTS.map((prod) => (
           <li key={prod.title}>

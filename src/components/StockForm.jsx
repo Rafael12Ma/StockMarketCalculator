@@ -10,14 +10,13 @@ export default function StockForm() {
     stockQuantity: "",
     stockBoughtValue: "",
   });
-
   let buttonState = <button onSubmit={HandleClick}>Save</button>;
   let quantityIsValid = values.stockQuantity >= 0;
   let valueIsValid = values.stockCurValue > 0;
   let message;
 
   if (buttonIsClicked) {
-    buttonState = <button onClick={HandleClick}>Set new</button>;
+    buttonState = <button onSubmit={HandleClick}>Save </button>;
   }
 
   function HandleClick() {

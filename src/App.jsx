@@ -9,7 +9,6 @@ import StockDetails, { detailLoader } from "./pages/StockDetails";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
 import LogOutPage from "./components/LogOutPage";
-import { loaderDetails } from "./pages/StockDetails";
 import NewStock, { action } from "./pages/NewStock";
 
 function App() {
