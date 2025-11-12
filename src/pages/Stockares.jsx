@@ -1,22 +1,18 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, Await } from "react-router-dom";
 import StocksPageTest from "./StocksPageTest";
+import { Suspense } from "react";
 
 export default function Stockares() {
-  const stocks = useLoaderData();
+  const { stocks } = useLoaderData();
 
   return (
     <>
+      <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+        <Await resolve={stocks}>
+          {(loadedStocks) => <StocksPageTest stocks={loadedStocks} />}
+        </Await>
+      </Suspense>
       <h1>My Stocks</h1>
-      {/* <ul>
-        {PRODUCTS.map((prod) => (
-          <li key={prod.title}>
-            <Link to={prod.title}>{prod.title}</Link>
-          </li>
-        ))}
-      </ul> */}
-      <div>
-        <StocksPageTest stocks={stocks} />
-      </div>
       <h1>
         <Link to="/new">New Stock form</Link>
       </h1>{" "}
@@ -24,7 +20,7 @@ export default function Stockares() {
   );
 }
 
-export async function StocksLoader() {
+async function loadStocks() {
   const response = await fetch("http://localhost:3000/stocks");
   if (!response.ok) {
     throw { message: "Could not fetch stocks." };
@@ -32,4 +28,10 @@ export async function StocksLoader() {
     const resData = await response.json();
     return resData.stocks;
   }
+}
+
+export function StocksLoader() {
+  return {
+    stocks: loadStocks(),
+  };
 }

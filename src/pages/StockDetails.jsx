@@ -13,14 +13,10 @@ export default function StockDetails() {
 
   let a;
   let precent;
-  let style;
-
-  let c = parseFloat(stock.currValue) > parseFloat(stock.boughtValue);
 
   a = Math.abs(stock.boughtValue - stock.currValue);
   precent = (a / stock.boughtValue) * 100;
   precent = precent.toFixed(2);
-  style = c ? "won" : "lost";
 
   let profit;
   let curVal = parseFloat(stock.currValue);

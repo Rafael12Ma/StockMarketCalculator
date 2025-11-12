@@ -21,7 +21,7 @@ export default function StocksPageTest({ stocks }) {
                       : "negative"
                   }`}
                 >
-                  ${stock.currValue}
+                  {Number(stock.currValue).toFixed(2)} $
                 </p>
               </div>
             </Link>

@@ -1,6 +1,7 @@
 import StockInput from "../components/StockInput";
 import Results from "../components/Results.jsx";
 import { useState } from "react";
+import { useNavigation } from "react-router-dom";
 
 export default function StockForm() {
   const [buttonIsClicked, setButtonIsClicked] = useState(false);
@@ -10,7 +11,16 @@ export default function StockForm() {
     stockQuantity: "",
     stockBoughtValue: "",
   });
-  let buttonState = <button onSubmit={HandleClick}>Save</button>;
+
+  // Updating the ui based on the submission status :
+  const navigation = useNavigation();
+  const isSubmiting = navigation.state === "submitting";
+
+  let buttonState = (
+    <button disabled={isSubmiting} onSubmit={HandleClick}>
+      {isSubmiting ? "Submitting" : "Save"}
+    </button>
+  );
   let quantityIsValid = values.stockQuantity >= 0;
   let valueIsValid = values.stockCurValue > 0;
   let message;

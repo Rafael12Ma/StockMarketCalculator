@@ -1,7 +1,5 @@
 import Header from "../components/Header";
 import Places from "../components/Places";
-import StockInput from "../components/StockInput";
-import { useState } from "react";
 import { useStock } from "../hooks/useStock";
 import Error from "../components/Error";
 
