@@ -38,7 +38,7 @@ export default function Header() {
 
   return (
     <header id="header">
-      <h1>Stock Analytics</h1>
+      <h1>Stock Analyticss</h1>
       <img src={imagelogo} alt="Stock market" />
       <NewTask
         refStock={refStock}
