@@ -87,10 +87,11 @@
   font-size: 0.95rem;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  margin: 0.2rem;
 }
 
 .button:hover {
-  background-color: #1d4ed8;
+  background-color: #d81d1d;
 }
 
 .notFound {
@@ -100,4 +101,12 @@
   height: 100vh;
   font-size: 1.25rem;
   color: #6b7280;
+}
+
+.deleteButton {
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background-color: red;
 }

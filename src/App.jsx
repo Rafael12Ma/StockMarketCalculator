@@ -10,6 +10,7 @@ import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
 import LogOutPage from "./components/LogOutPage";
 import NewStock, { action } from "./pages/NewStock";
+import StockEdit from "./pages/EditStock";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,11 @@ function App() {
         {
           path: "stocks/:stockId",
           element: <StockDetails />,
+          loader: detailLoader,
+        },
+        {
+          path: "/stocks/:stockId/edit",
+          element: <StockEdit />,
           loader: detailLoader,
         },
         {

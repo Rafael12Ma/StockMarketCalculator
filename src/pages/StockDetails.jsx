@@ -1,15 +1,18 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import classes from "./StockDetails.module.css";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { RiDeleteBinFill } from "react-icons/ri";
 
 export default function StockDetails() {
   const params = useParams();
-  // const stocks = useLoaderData();
-  // const vals = stocks.find((stock) => stock.name === params.stockName);
-  // console.log(vals);
-  const id = params.stockId - 1;
+  const navigate = useNavigate();
+
+  const id = Number(params.stockId);
   const stocks = useLoaderData();
-  const stock = stocks[id];
+  const stock = stocks.find((s) => s.id === id);
+
+  console.log(id);
 
   let a;
   let precent;
@@ -28,6 +31,22 @@ export default function StockDetails() {
 
   profit = curVal * quant - boughtVal * quant;
   profit = profit.toFixed(2);
+  async function deleteHandler() {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this stock?"
+    );
+    if (!confirmDelete) return;
+
+    const response = await fetch(`http://localhost:3000/stocks/${stock.id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      navigate("/stocks");
+    } else {
+      alert("Error deleting stock.");
+    }
+  }
 
   return (
     <>
@@ -38,6 +57,12 @@ export default function StockDetails() {
       ) : (
         <div className={classes.container}>
           <div className={classes.card}>
+            <button
+              onClick={() => window.history.back()}
+              className={classes.button}
+            >
+              ← Back to Stocks
+            </button>
             <div className={classes.header}>
               <img
                 src={`http://localhost:3000/${stock.imageSrc}`}
@@ -80,12 +105,17 @@ export default function StockDetails() {
               </div>
             </div>
             {/*  */}
+
             <div className={classes.footer}>
               <button
-                onClick={() => window.history.back()}
+                onClick={() => navigate(`/stocks/${stock.id}/edit`)}
                 className={classes.button}
               >
-                ← Back to Stocks
+                ✏️ Edit
+              </button>
+
+              <button onClick={deleteHandler} className={classes.button}>
+                <RiDeleteBinFill />
               </button>
             </div>
           </div>
