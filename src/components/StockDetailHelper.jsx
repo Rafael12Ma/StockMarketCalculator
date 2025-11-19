@@ -3,6 +3,7 @@ import classes from "../pages/StockDetails.module.css";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { RiDeleteBinFill } from "react-icons/ri";
+import { FaEuroSign } from "react-icons/fa";
 
 export default function StockDetailHelper() {
   const params = useParams();
@@ -31,6 +32,9 @@ export default function StockDetailHelper() {
 
   profit = curVal * quant - boughtVal * quant;
   profit = profit.toFixed(2);
+  let toEuro = profit * 0.87;
+  toEuro = toEuro.toFixed(2);
+
   async function deleteHandler() {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this stock?"
@@ -47,13 +51,10 @@ export default function StockDetailHelper() {
       alert("Error deleting stock.");
     }
   }
+
   return (
     <>
-      {!stock ? (
-        <div className={classes.notFound}>
-          <p>Stock not found 😢</p>
-        </div>
-      ) : (
+      {stock && (
         <div className={classes.container}>
           <div className={classes.card}>
             <button
@@ -101,6 +102,17 @@ export default function StockDetailHelper() {
                 <span>Profit</span>
                 <span className={bool ? classes.positive : classes.negative}>
                   {profit}$ {bool ? <FaArrowUp /> : <FaArrowDown />} {precent} %
+                </span>
+              </div>
+
+              <div className={classes.row}>
+                <span>
+                  <FaEuroSign />
+                </span>
+                <span className={bool ? classes.positive : classes.negative}>
+                  {toEuro}
+                  <FaEuroSign /> {bool ? <FaArrowUp /> : <FaArrowDown />}{" "}
+                  {precent} %
                 </span>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function StocksPageTest({ stocks }) {
+export default function StocksCard({ stocks }) {
   return (
     <>
       <ul className="stocks-grid">

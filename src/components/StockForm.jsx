@@ -20,8 +20,7 @@ export default function StockForm() {
       {isSubmiting ? "Submitting" : "Save"}
     </button>
   );
-  let quantityIsValid = values.stockQuantity >= 0;
-  let valueIsValid = values.stockCurValue > 0;
+
   let message;
 
   if (buttonIsClicked) {

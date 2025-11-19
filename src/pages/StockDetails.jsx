@@ -1,15 +1,9 @@
-import { Suspense } from "react";
 import StockDetailHelper from "../components/StockDetailHelper";
-import { Await, useLoaderData } from "react-router-dom";
 
 export default function StockDetails() {
   return (
     <>
-      <Suspense fallback={<p>Loading stock card</p>}>
-        <Await>
-          <StockDetailHelper />
-        </Await>
-      </Suspense>
+      <StockDetailHelper />
     </>
   );
 }

@@ -1,23 +1,22 @@
-import { Link, useLoaderData, Await } from "react-router-dom";
-import StocksPageTest from "./StocksPageTest";
-import { Suspense, lazy } from "react";
-
+import { useLoaderData, Await } from "react-router-dom";
+import { Suspense } from "react";
+import StocksCard from "./StocksCard";
+import NewStockLinks from "./NewStockLink";
 
 export default function Stockares() {
   const { stocks } = useLoaderData();
-  const NewStockLinks = lazy(() => import("./NewStockLink"));
+
   return (
     <>
-      <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
-        <Await resolve={stocks}>
-          {(loadedStocks) => <StocksPageTest stocks={loadedStocks} />}
-        </Await>
-      </Suspense>
       <h1>My Stocks</h1>
+
+      <NewStockLinks />
       <Suspense
-        fallback={<p style={{ textAlign: "center" }}>Loading test...</p>}
+        fallback={<p style={{ textAlign: "center" }}>Loading stocks...</p>}
       >
-        <NewStockLinks />
+        <Await resolve={stocks}>
+          {(loadedStocks) => <StocksCard stocks={loadedStocks} />}
+        </Await>
       </Suspense>
     </>
   );
