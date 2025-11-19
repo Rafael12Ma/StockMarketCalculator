@@ -1,5 +1,4 @@
 import StockInput from "../components/StockInput";
-import Results from "../components/Results.jsx";
 import { useState } from "react";
 import { useNavigation } from "react-router-dom";
 
@@ -32,23 +31,7 @@ export default function StockForm() {
   function HandleClick() {
     setButtonIsClicked(() => !buttonIsClicked);
   }
-  if (buttonIsClicked) {
-    if (quantityIsValid && valueIsValid) {
-      message = <Results buttonIsClicked={buttonIsClicked} values={values} />;
-    } else if (quantityIsValid && !valueIsValid) {
-      message = (
-        <h1 className="center">Please set a Stock Value greater than 0!</h1>
-      );
-    } else if (!quantityIsValid && valueIsValid) {
-      message = <h1 className="center">Please set a Quantity value {">"}=0</h1>;
-    } else if (!quantityIsValid && !valueIsValid) {
-      message = (
-        <h1 className="center">
-          Please set a Stock Value greater than 0 and a Quantity value {">"}=0
-        </h1>
-      );
-    }
-  }
+
   function handleChange(identifier, newValue) {
     setValues({
       ...values,

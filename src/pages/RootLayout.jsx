@@ -8,7 +8,11 @@ export default function RootLayout() {
     <>
       <MainNavigationBar />
       <main>
-        {navigate.state === "loading" ? <p>Loading ...</p> : <Outlet />}
+        {navigate.state === "loading" ? (
+          <p style={{ textAlign: "center" }}>Loading ...</p>
+        ) : (
+          <Outlet />
+        )}
       </main>
     </>
   );

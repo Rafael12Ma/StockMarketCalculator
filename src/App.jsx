@@ -5,14 +5,17 @@ import HomePage from "./pages/HomePage";
 import Stockares, { StocksLoader } from "./pages/Stockares";
 import RootLayout from "./pages/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
-import StockDetails, { detailLoader } from "./pages/StockDetails";
+import { detailLoader } from "./pages/StockDetails";
 import SignInPage from "./components/SignInPage";
-import SignUpPage from "./components/SignUpPage";
+// import SignUpPage from "./components/SignUpPage";
 import LogOutPage from "./components/LogOutPage";
 import NewStock, { action } from "./pages/NewStock";
 import StockEdit from "./pages/EditStock";
+import React, { lazy, Suspense } from "react";
 
 function App() {
+  const SignUpPage = lazy(() => import("./components/SignUpPage"));
+  const StockDetails = lazy(() => import("./pages/StockDetails"));
   const router = createBrowserRouter([
     {
       path: "/",
@@ -42,7 +45,12 @@ function App() {
         },
         {
           path: "/signUp",
-          element: <SignUpPage />,
+          element: (
+            <Suspense fallback={<p style={{ textAlign: "center" }}>Loading</p>}>
+              <SignUpPage />
+            </Suspense>
+          ),
+
           errorElement: <ErrorPage />,
         },
         {

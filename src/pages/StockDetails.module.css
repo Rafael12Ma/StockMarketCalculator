@@ -77,6 +77,19 @@
   margin-top: 1rem;
 }
 
+.back {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin: 0.2rem;
+}
+
 .button {
   background-color: #2563eb;
   color: #fff;
@@ -88,6 +101,10 @@
   font-weight: 500;
   transition: background-color 0.3s ease;
   margin: 0.2rem;
+}
+
+.hr {
+  border-top: 1px solid rgb(218, 211, 211);
 }
 
 .button:hover {

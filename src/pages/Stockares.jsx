@@ -1,10 +1,11 @@
 import { Link, useLoaderData, Await } from "react-router-dom";
 import StocksPageTest from "./StocksPageTest";
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
+
 
 export default function Stockares() {
   const { stocks } = useLoaderData();
-
+  const NewStockLinks = lazy(() => import("./NewStockLink"));
   return (
     <>
       <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
@@ -13,9 +14,11 @@ export default function Stockares() {
         </Await>
       </Suspense>
       <h1>My Stocks</h1>
-      <h1>
-        <Link to="/new">New Stock form</Link>
-      </h1>{" "}
+      <Suspense
+        fallback={<p style={{ textAlign: "center" }}>Loading test...</p>}
+      >
+        <NewStockLinks />
+      </Suspense>
     </>
   );
 }
