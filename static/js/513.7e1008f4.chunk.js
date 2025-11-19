@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkstock=self.webpackChunkstock||[]).push([[513],{513:(e,c,s)=>{s.r(c),s.d(c,{default:()=>r});var t=s(902),n=s(579);function r(){return(0,n.jsx)("h1",{children:(0,n.jsx)(t.N_,{to:"/new",children:"New Stock form"})})}}}]);
+//# sourceMappingURL=513.7e1008f4.chunk.js.map
