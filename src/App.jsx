@@ -12,9 +12,10 @@ import NewStock, { action } from "./pages/NewStock";
 import EditStock from "./pages/EditStock";
 import { lazy, Suspense } from "react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import SignUpPage from "./components/SignUpPage";
 
 function App() {
-  const SignUpPage = lazy(() => import("./components/SignUpPage"));
+  // const SignUpPage = lazy(() => import("./components/SignUpPage"));
   const router = createBrowserRouter([
     {
       path: "/",
@@ -45,9 +46,9 @@ function App() {
         {
           path: "/signUp",
           element: (
-            <Suspense fallback={<p style={{ textAlign: "center" }}>Loading</p>}>
-              <SignUpPage />
-            </Suspense>
+            // <Suspense fallback={<p style={{ textAlign: "center" }}>Loading</p>}>
+            <SignUpPage />
+            // </Suspense>
           ),
 
           errorElement: <ErrorPage />,

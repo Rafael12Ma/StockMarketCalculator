@@ -5,6 +5,10 @@ import {
   isEqualToOtherValue,
   isNotEmpty,
 } from "../util/validation.js";
+import { useQuery } from "@tanstack/react-query";
+// import Login from "../login/Login";
+import { fetchStocks } from "../util/http.js";
+import { Atom } from "react-loading-indicators";
 
 function loginAction(prevFormState, formData) {
   const email = formData.get("email");
@@ -65,150 +69,176 @@ function loginAction(prevFormState, formData) {
 }
 
 export default function Login() {
+  const { data, isPending, isError, error } = useQuery({
+    queryKey: ["stocks"],
+    queryFn: fetchStocks,
+  });
+  let content;
+
+  if (isPending) {
+    content = (
+      <div style={{ textAlign: "center" }}>
+        <Atom
+          textColor="yellow"
+          text="Loading Form..."
+          color="white"
+          size="large"
+        />
+      </div>
+    );
+  }
   const [formState, formAction] = useActionState(loginAction, { errors: null });
 
   return (
-    <form action={formAction}>
-      <h2>Welcome on board!</h2>
-      <p>We just need a little bit of data from you to get you started 🚀</p>
+    <>
+      {isPending ? (
+        content
+      ) : (
+        <form action={formAction}>
+          <h2>Welcome on board!</h2>
+          <p>
+            We just need a little bit of data from you to get you started 🚀
+          </p>
 
-      <div className="control">
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          defaultValue={formState.enteredValues?.email}
-        />
-      </div>
+          <div className="control">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              defaultValue={formState.enteredValues?.email}
+            />
+          </div>
 
-      <div className="control-row">
-        <div className="control">
-          <label htmlFor="password">Password</label>
-          <input
-            defaultValue={formState.enteredValues?.password}
-            id="password"
-            type="password"
-            name="password"
-          />
-        </div>
+          <div className="control-row">
+            <div className="control">
+              <label htmlFor="password">Password</label>
+              <input
+                defaultValue={formState.enteredValues?.password}
+                id="password"
+                type="password"
+                name="password"
+              />
+            </div>
 
-        <div className="control">
-          <label htmlFor="confirm-password">Confirm Password</label>
-          <input
-            defaultValue={formState.enteredValues?.confirmPass}
-            id="confirm-password"
-            type="password"
-            name="confirm-password"
-          />
-        </div>
-      </div>
+            <div className="control">
+              <label htmlFor="confirm-password">Confirm Password</label>
+              <input
+                defaultValue={formState.enteredValues?.confirmPass}
+                id="confirm-password"
+                type="password"
+                name="confirm-password"
+              />
+            </div>
+          </div>
 
-      <hr />
+          <hr />
 
-      <div className="control-row">
-        <div className="control">
-          <label htmlFor="first-name">First Name</label>
-          <input
-            defaultValue={formState.enteredValues?.firstName}
-            type="text"
-            id="first-name"
-            name="first-name"
-          />
-        </div>
+          <div className="control-row">
+            <div className="control">
+              <label htmlFor="first-name">First Name</label>
+              <input
+                defaultValue={formState.enteredValues?.firstName}
+                type="text"
+                id="first-name"
+                name="first-name"
+              />
+            </div>
 
-        <div className="control">
-          <label htmlFor="last-name">Last Name</label>
-          <input
-            defaultValue={formState.enteredValues?.lastName}
-            type="text"
-            id="last-name"
-            name="last-name"
-          />
-        </div>
-      </div>
+            <div className="control">
+              <label htmlFor="last-name">Last Name</label>
+              <input
+                defaultValue={formState.enteredValues?.lastName}
+                type="text"
+                id="last-name"
+                name="last-name"
+              />
+            </div>
+          </div>
 
-      <div className="control">
-        <label htmlFor="phone">What best describes your role?</label>
-        <select
-          defaultValue={formState.enteredValues?.role}
-          id="role"
-          name="role"
-        >
-          <option value="student">Student</option>
-          <option value="teacher">Teacher</option>
-          <option value="employee">Employee</option>
-          <option value="founder">Founder</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
+          <div className="control">
+            <label htmlFor="phone">What best describes your role?</label>
+            <select
+              defaultValue={formState.enteredValues?.role}
+              id="role"
+              name="role"
+            >
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+              <option value="employee">Employee</option>
+              <option value="founder">Founder</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
 
-      <fieldset>
-        <legend>How did you find us?</legend>
-        <div className="control">
-          <input
-            defaultChecked={formState.enteredValues?.acquisitionChannel.includes(
-              "google"
-            )}
-            type="checkbox"
-            id="google"
-            name="acquisition"
-            value="google"
-          />
-          <label htmlFor="google">Google</label>
-        </div>
+          <fieldset>
+            <legend>How did you find us?</legend>
+            <div className="control">
+              <input
+                defaultChecked={formState.enteredValues?.acquisitionChannel.includes(
+                  "google"
+                )}
+                type="checkbox"
+                id="google"
+                name="acquisition"
+                value="google"
+              />
+              <label htmlFor="google">Google</label>
+            </div>
 
-        <div className="control">
-          <input
-            defaultChecked={formState.enteredValues?.acquisitionChannel.includes(
-              "friend"
-            )}
-            type="checkbox"
-            id="friend"
-            name="acquisition"
-            value="friend"
-          />
-          <label htmlFor="friend">Referred by friend</label>
-        </div>
+            <div className="control">
+              <input
+                defaultChecked={formState.enteredValues?.acquisitionChannel.includes(
+                  "friend"
+                )}
+                type="checkbox"
+                id="friend"
+                name="acquisition"
+                value="friend"
+              />
+              <label htmlFor="friend">Referred by friend</label>
+            </div>
 
-        <div className="control">
-          <input
-            type="checkbox"
-            id="other"
-            name="acquisition"
-            value="other"
-            defaultChecked={formState.enteredValues?.acquisitionChannel.includes(
-              "other"
-            )}
-          />
-          <label htmlFor="other">Other</label>
-        </div>
-      </fieldset>
+            <div className="control">
+              <input
+                type="checkbox"
+                id="other"
+                name="acquisition"
+                value="other"
+                defaultChecked={formState.enteredValues?.acquisitionChannel.includes(
+                  "other"
+                )}
+              />
+              <label htmlFor="other">Other</label>
+            </div>
+          </fieldset>
 
-      <div className="control">
-        <label htmlFor="terms-and-conditions">
-          <input
-            defaultChecked={formState.enteredValues?.terms}
-            type="checkbox"
-            id="terms-and-conditions"
-            name="terms"
-          />
-          agree to the terms and conditions
-        </label>
-      </div>
-      {formState.errors && (
-        <ul className="error">
-          {formState.errors.map((error) => {
-            return <li key={error}>{error}</li>;
-          })}
-        </ul>
+          <div className="control">
+            <label htmlFor="terms-and-conditions">
+              <input
+                defaultChecked={formState.enteredValues?.terms}
+                type="checkbox"
+                id="terms-and-conditions"
+                name="terms"
+              />
+              agree to the terms and conditions
+            </label>
+          </div>
+          {formState.errors && (
+            <ul className="error">
+              {formState.errors.map((error) => {
+                return <li key={error}>{error}</li>;
+              })}
+            </ul>
+          )}
+          <p className="form-actions">
+            <button type="reset" className="button button-flat">
+              Reset
+            </button>
+            <button className="button">Sign up</button>
+          </p>
+        </form>
       )}
-      <p className="form-actions">
-        <button type="reset" className="button button-flat">
-          Reset
-        </button>
-        <button className="button">Sign up</button>
-      </p>
-    </form>
+    </>
   );
 }
