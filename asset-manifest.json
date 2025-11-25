@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/StockMarketCalculator/static/css/main.bc84fdb2.css",
-    "main.js": "/StockMarketCalculator/static/js/main.a99f350c.js",
-    "static/js/313.e3442fcd.chunk.js": "/StockMarketCalculator/static/js/313.e3442fcd.chunk.js",
-    "static/js/453.60c639f0.chunk.js": "/StockMarketCalculator/static/js/453.60c639f0.chunk.js",
-    "static/media/image.png": "/StockMarketCalculator/static/media/image.bfef5ab2063b729d95d9.png",
-    "index.html": "/StockMarketCalculator/index.html",
-    "main.bc84fdb2.css.map": "/StockMarketCalculator/static/css/main.bc84fdb2.css.map",
-    "main.a99f350c.js.map": "/StockMarketCalculator/static/js/main.a99f350c.js.map",
-    "313.e3442fcd.chunk.js.map": "/StockMarketCalculator/static/js/313.e3442fcd.chunk.js.map",
-    "453.60c639f0.chunk.js.map": "/StockMarketCalculator/static/js/453.60c639f0.chunk.js.map"
+    "main.css": "/static/css/main.bc84fdb2.css",
+    "main.js": "/static/js/main.ccc792fe.js",
+    "static/js/313.e3442fcd.chunk.js": "/static/js/313.e3442fcd.chunk.js",
+    "static/js/453.60c639f0.chunk.js": "/static/js/453.60c639f0.chunk.js",
+    "static/media/image.png": "/static/media/image.bfef5ab2063b729d95d9.png",
+    "index.html": "/index.html",
+    "main.bc84fdb2.css.map": "/static/css/main.bc84fdb2.css.map",
+    "main.ccc792fe.js.map": "/static/js/main.ccc792fe.js.map",
+    "313.e3442fcd.chunk.js.map": "/static/js/313.e3442fcd.chunk.js.map",
+    "453.60c639f0.chunk.js.map": "/static/js/453.60c639f0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bc84fdb2.css",
-    "static/js/main.a99f350c.js"
+    "static/js/main.ccc792fe.js"
   ]
 }
