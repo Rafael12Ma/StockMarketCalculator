@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigation, useParams } from "react-router-dom";
 import classes from "../pages/StockDetails.module.css";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -51,14 +51,13 @@ export default function StockDetailHelper() {
       alert("Error deleting stock.");
     }
   }
-
   return (
     <>
       {stock && (
         <div className={classes.container}>
           <div className={classes.card}>
             <button
-              onClick={() => window.history.back()}
+              onClick={() => navigate("/stocks")}
               className={classes.back}
             >
               ← Back to Stocks

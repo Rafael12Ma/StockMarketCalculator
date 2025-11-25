@@ -1,23 +1,44 @@
-import { useLoaderData, Await } from "react-router-dom";
-import { Suspense } from "react";
 import StocksCard from "./StocksCard";
 import NewStockLinks from "./NewStockLink";
+import { useQuery } from "@tanstack/react-query";
+import { fetchStocks } from "../util/http";
+import { Atom } from "react-loading-indicators";
 
 export default function Stockares() {
-  const { stocks } = useLoaderData();
+  // tanstackQuery
+  const { data, isPending, isError, error } = useQuery({
+    queryKey: ["stocks"],
+    queryFn: fetchStocks,
+  });
+
+  let content;
+
+  if (isPending) {
+    content = (
+      <div style={{ textAlign: "center" }}>
+        <Atom
+          textColor="yellow"
+          text="Fetching Stocks..."
+          color="white"
+          size="large"
+        />
+      </div>
+    );
+  }
+
+  if (isError) {
+    content = <p>Error loading data:{error.message}</p>;
+  }
+
+  // tanstackQuery
 
   return (
     <>
       <h1>My Stocks</h1>
-
       <NewStockLinks />
-      <Suspense
-        fallback={<p style={{ textAlign: "center" }}>Loading stocks...</p>}
-      >
-        <Await resolve={stocks}>
-          {(loadedStocks) => <StocksCard stocks={loadedStocks} />}
-        </Await>
-      </Suspense>
+
+      {content}
+      {data && <StocksCard stocks={data} />}
     </>
   );
 }

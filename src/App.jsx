@@ -11,6 +11,8 @@ import LogOutPage from "./components/LogOutPage";
 import NewStock, { action } from "./pages/NewStock";
 import EditStock from "./pages/EditStock";
 import { lazy, Suspense } from "react";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
 function App() {
   const SignUpPage = lazy(() => import("./components/SignUpPage"));
   const router = createBrowserRouter([
@@ -63,8 +65,12 @@ function App() {
       ],
     },
   ]);
-
-  return <RouterProvider router={router} />;
+  const queryClient = new QueryClient();
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
