@@ -1,7 +1,7 @@
 {
   "name": "stock",
   "version": "0.1.0",
-  "homepage": "https://Rafael12Ma.github.io/StockMarketCalculator/",
+  "homepage": "https://Rafael12Ma.github.io/",
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "^5.90.10",

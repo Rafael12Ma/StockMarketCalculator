@@ -70,7 +70,7 @@ function loginAction(prevFormState, formData) {
 
 export default function Login() {
   const { data, isPending, isError, error } = useQuery({
-    queryKey: ["stocks"],
+    queryKey: ["stocksLogin"],
     queryFn: fetchStocks,
   });
   let content;
@@ -97,7 +97,7 @@ export default function Login() {
         <form action={formAction}>
           <h2>Welcome on board!</h2>
           <p>
-            We just need a little bit of data from you to get you started 🚀
+            We just need a little bist of data from you to get you started 🚀
           </p>
 
           <div className="control">

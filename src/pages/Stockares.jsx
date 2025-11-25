@@ -9,6 +9,7 @@ export default function Stockares() {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["stocks"],
     queryFn: fetchStocks,
+    gcTime: 18000000,
   });
 
   let content;
@@ -27,7 +28,11 @@ export default function Stockares() {
   }
 
   if (isError) {
-    content = <p>Error loading data:{error.message}</p>;
+    content = (
+      <p style={{ textAlign: "center" }}>
+        Error loading data : {error.message}
+      </p>
+    );
   }
 
   // tanstackQuery
