@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { useLoaderData, useParams, useNavigate } from "react-router-dom";
+import LoadingQuery from "./LoadingQuery";
 
 export default function EditStockHelper() {
+  const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
   const stocks = useLoaderData();
@@ -8,7 +11,7 @@ export default function EditStockHelper() {
 
   async function submitHandler(e) {
     e.preventDefault();
-
+    setIsClicked(true);
     const formData = {
       name: e.target.name.value,
       currValue: e.target.currValue.value,
@@ -31,7 +34,11 @@ export default function EditStockHelper() {
         <input name="currValue" defaultValue={stock.currValue} />
         <input name="boughtValue" defaultValue={stock.boughtValue} />
         <input name="quantity" defaultValue={stock.quantity} />
-        <button>Save</button>
+        {isClicked ? (
+          <LoadingQuery text="Saving stock" />
+        ) : (
+          <button disabled={isClicked}>Save</button>
+        )}{" "}
       </form>
     </>
   );

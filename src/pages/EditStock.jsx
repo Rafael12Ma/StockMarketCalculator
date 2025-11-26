@@ -1,12 +1,8 @@
-import { lazy, Suspense } from "react";
-
+import EditStock from "../components/EditStockHelper";
 export default function StockEdit() {
-  const EditStock = lazy(() => import("../components/EditStockHelper"));
   return (
     <>
-      <Suspense fallback={<p style={{ textAlign: "center" }}>Data restored</p>}>
-        <EditStock />
-      </Suspense>
+      <EditStock />
     </>
   );
 }
