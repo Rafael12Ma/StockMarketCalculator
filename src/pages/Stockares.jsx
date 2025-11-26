@@ -3,28 +3,16 @@ import NewStockLinks from "./NewStockLink";
 import { useQuery } from "@tanstack/react-query";
 import { fetchStocks } from "../util/http";
 import { Atom } from "react-loading-indicators";
+import { useStocksQuery } from "../hooks/useStockQuery";
+import LoadingQuery from "../components/LoadingQuery";
 
 export default function Stockares() {
   // tanstackQuery
-  const { data, isPending, isError, error } = useQuery({
-    queryKey: ["stocks"],
-    queryFn: fetchStocks,
-    gcTime: 18000000,
-  });
-
+  const { data, isPending, isError, error } = useStocksQuery();
   let content;
 
   if (isPending) {
-    content = (
-      <div style={{ textAlign: "center" }}>
-        <Atom
-          textColor="yellow"
-          text="Fetching Stocks..."
-          color="white"
-          size="large"
-        />
-      </div>
-    );
+    content = <LoadingQuery text="Fetching Stocks..." />;
   }
 
   if (isError) {
@@ -43,7 +31,7 @@ export default function Stockares() {
       <NewStockLinks />
 
       {content}
-      {data && <StocksCard stocks={data} />}
+      <StocksCard stocks={data} />
     </>
   );
 }

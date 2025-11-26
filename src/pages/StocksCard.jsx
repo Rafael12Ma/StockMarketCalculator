@@ -4,7 +4,7 @@ export default function StocksCard({ stocks }) {
   return (
     <>
       <ul className="stocks-grid">
-        {stocks.map((stock) => (
+        {stocks?.map((stock) => (
           <li key={stock.id} className="stock-card">
             <Link to={`/stocks/${stock.id}`}>
               <img

@@ -9,6 +9,8 @@ import { useQuery } from "@tanstack/react-query";
 // import Login from "../login/Login";
 import { fetchStocks } from "../util/http.js";
 import { Atom } from "react-loading-indicators";
+import LoadingQuery from "../components/LoadingQuery.jsx";
+import { useStocksQuery } from "../hooks/useStockQuery.js";
 
 function loginAction(prevFormState, formData) {
   const email = formData.get("email");
@@ -69,31 +71,28 @@ function loginAction(prevFormState, formData) {
 }
 
 export default function Login() {
-  const { data, isPending, isError, error } = useQuery({
-    queryKey: ["stocksLogin"],
-    queryFn: fetchStocks,
-  });
+  const { data, isPending, isError, error } = useStocksQuery();
   let content;
 
   if (isPending) {
+    content = <LoadingQuery text="Fetching Stocks..." />;
+  }
+
+  if (isError) {
     content = (
-      <div style={{ textAlign: "center" }}>
-        <Atom
-          textColor="yellow"
-          text="Loading Form..."
-          color="white"
-          size="large"
-        />
-      </div>
+      <p style={{ textAlign: "center" }}>
+        Error loading data : {error.message}
+      </p>
     );
   }
+
+  // tanstackQuery
   const [formState, formAction] = useActionState(loginAction, { errors: null });
 
   return (
     <>
-      {isPending ? (
-        content
-      ) : (
+      {content}{" "}
+      {data && (
         <form action={formAction}>
           <h2>Welcome on board!</h2>
           <p>
