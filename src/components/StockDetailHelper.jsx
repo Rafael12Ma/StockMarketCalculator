@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigation, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import classes from "../pages/StockDetails.module.css";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,8 @@ import { FaEuroSign } from "react-icons/fa";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { deleteStock, fetchStock, queryClient } from "../util/http";
 import Error from "./Error";
+import LoadingQuery from "./LoadingQuery";
+import { useState } from "react";
 
 export default function StockDetailHelper() {
   // useQuery
@@ -20,11 +22,7 @@ export default function StockDetailHelper() {
   // console.log(data);
 
   if (isPending) {
-    content = (
-      <div>
-        <p>Fetching card data...</p>
-      </div>
-    );
+    content = <LoadingQuery text="Fetching Stock..." />;
   }
 
   if (isError) {
@@ -95,87 +93,100 @@ export default function StockDetailHelper() {
       navigate("/stocks");
     },
   });
-
+  const [isDeleting, setIsDeleting] = useState(false);
   function deleteHandler() {
-    mutate({ stockId: params.stockId });
+    mutate({ id: params.stockId });
+    setIsDeleting(true);
   }
   // </delete with useMutation>
   if (data) {
     content = data && (
-      <div className={classes.container}>
-        <div className={classes.card}>
-          <button onClick={() => navigate("/stocks")} className={classes.back}>
-            ← Back to Stocks
-          </button>
-          <hr className={classes.hr} />
-          <div className={classes.header}>
-            <img
-              src={`http://localhost:3000/${data.imageSrc}`}
-              alt={data.name}
-              className={classes.image}
-            />
-            <h1 className={classes.title}>{data.name}</h1>
-          </div>
-
-          <div className={classes.details}>
-            <div className={classes.row}>
-              <span>Value</span>
-              <span>{data.curVal} $</span>
-            </div>
-
-            <div className={classes.row}>
-              <span>Quantity</span>
-              <span>{data.quantity}</span>
-            </div>
-
-            <div className={classes.row}>
-              <span>Worth</span>
-              <span>{data.currValue * data.quantity} $</span>
-            </div>
-          </div>
-
-          {/*  */}
-
-          <div className={classes.details}>
-            <div className={classes.row}>
-              <span>Bought avg. Value</span>
-              <span>{data.boughtValue} $</span>
-            </div>
-
-            <div className={classes.row}>
-              <span>Profit</span>
-              <span className={bool ? classes.positive : classes.negative}>
-                {profit}$ {bool ? <FaArrowUp /> : <FaArrowDown />} {precent} %
-              </span>
-            </div>
-
-            <div className={classes.row}>
-              <span>
-                <FaEuroSign />
-              </span>
-              <span className={bool ? classes.positive : classes.negative}>
-                {toEuro}
-                <FaEuroSign /> {bool ? <FaArrowUp /> : <FaArrowDown />}{" "}
-                {precent} %
-              </span>
-            </div>
-          </div>
-          {/*  */}
-
-          <div className={classes.footer}>
+      <>
+        <div className={classes.container}>
+          <div className={classes.card}>
             <button
-              onClick={() => navigate(`/stocks/${data.id}/edit`)}
-              className={classes.button}
+              onClick={() => navigate("/stocks")}
+              className={classes.back}
             >
-              ✏️ Edit
+              ← Back to Stocks
             </button>
+            <hr className={classes.hr} />
+            <div className={classes.header}>
+              <img
+                src={`http://localhost:3000/${data.imageSrc}`}
+                alt={data.name}
+                className={classes.image}
+              />
+              <h1 className={classes.title}>{data.name}</h1>
+            </div>
 
-            <button onClick={deleteHandler} className={classes.button}>
-              <RiDeleteBinFill />
-            </button>
+            <div className={classes.details}>
+              <div className={classes.row}>
+                <span>Value</span>
+                <span>{data.curVal} $</span>
+              </div>
+
+              <div className={classes.row}>
+                <span>Quantity</span>
+                <span>{data.quantity}</span>
+              </div>
+
+              <div className={classes.row}>
+                <span>Worth</span>
+                <span>{data.currValue * data.quantity} $</span>
+              </div>
+            </div>
+
+            {/*  */}
+
+            <div className={classes.details}>
+              <div className={classes.row}>
+                <span>Bought avg. Value</span>
+                <span>{data.boughtValue} $</span>
+              </div>
+
+              <div className={classes.row}>
+                <span>Profit</span>
+                <span className={bool ? classes.positive : classes.negative}>
+                  {profit}$ {bool ? <FaArrowUp /> : <FaArrowDown />} {precent} %
+                </span>
+              </div>
+
+              <div className={classes.row}>
+                <span>
+                  <FaEuroSign />
+                </span>
+                <span className={bool ? classes.positive : classes.negative}>
+                  {toEuro}
+                  <FaEuroSign /> {bool ? <FaArrowUp /> : <FaArrowDown />}{" "}
+                  {precent} %
+                </span>
+              </div>
+            </div>
+            {!isDeleting ? (
+              <div className={classes.footer}>
+                <button
+                  disabled={isDeleting}
+                  onClick={() => navigate(`/stocks/${data.id}/edit`)}
+                  className={classes.button}
+                >
+                  ✏️ Edit
+                </button>
+
+                <button
+                  disabled={isDeleting}
+                  onClick={deleteHandler}
+                  className={classes.button}
+                >
+                  <RiDeleteBinFill />
+                </button>
+              </div>
+            ) : (
+              <LoadingQuery textColor="black" color="red" text="Deleting..." />
+            )}
           </div>
         </div>
-      </div>
+      </>
     );
   }
   return (

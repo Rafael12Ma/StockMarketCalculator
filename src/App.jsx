@@ -10,7 +10,7 @@ import SignInPage from "./components/SignInPage";
 import LogOutPage from "./components/LogOutPage";
 import NewStock, { action } from "./pages/NewStock";
 import EditStock from "./pages/EditStock";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import SignUpPage from "./components/SignUpPage";
 import { queryClient } from "./util/http";
 

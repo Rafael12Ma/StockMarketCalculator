@@ -3,12 +3,8 @@ import StockDetailHelper from "../components/StockDetailHelper";
 import { useStocksQuery } from "../hooks/useStockQuery";
 
 export default function StockDetails() {
-  const { data, isPending, isError, error } = useStocksQuery();
+  const { data, isError, error } = useStocksQuery();
   let content;
-
-  if (isPending) {
-    content = <LoadingQuery text="Fetching Stocks..." />;
-  }
 
   if (isError) {
     content = (

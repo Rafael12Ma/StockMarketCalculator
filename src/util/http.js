@@ -48,8 +48,8 @@ export async function fetchStock({ stockId, signal }) {
 }
 
 
-export async function deleteStock({ stockId }) {
-    const response = await fetch(`http://localhost:3000/stocks/${stockId}`, {
+export async function deleteStock({ id }) {
+    const response = await fetch(`http://localhost:3000/stocks/${id}`, {
         method: "DELETE"
     })
     if (!response.ok) {
