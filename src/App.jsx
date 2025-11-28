@@ -12,6 +12,7 @@ import NewStock, { action } from "./pages/NewStock";
 import EditStock from "./pages/EditStock";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import SignUpPage from "./components/SignUpPage";
+import { queryClient } from "./util/http";
 
 function App() {
   const router = createBrowserRouter([
@@ -60,7 +61,6 @@ function App() {
       ],
     },
   ]);
-  const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
