@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/StockMarketCalculator/static/css/main.bc84fdb2.css",
-    "main.js": "/StockMarketCalculator/static/js/main.444d59ba.js",
+    "main.js": "/StockMarketCalculator/static/js/main.f35a622c.js",
     "static/js/453.60c639f0.chunk.js": "/StockMarketCalculator/static/js/453.60c639f0.chunk.js",
     "static/media/image.png": "/StockMarketCalculator/static/media/image.bfef5ab2063b729d95d9.png",
     "index.html": "/StockMarketCalculator/index.html",
     "main.bc84fdb2.css.map": "/StockMarketCalculator/static/css/main.bc84fdb2.css.map",
-    "main.444d59ba.js.map": "/StockMarketCalculator/static/js/main.444d59ba.js.map",
+    "main.f35a622c.js.map": "/StockMarketCalculator/static/js/main.f35a622c.js.map",
     "453.60c639f0.chunk.js.map": "/StockMarketCalculator/static/js/453.60c639f0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bc84fdb2.css",
-    "static/js/main.444d59ba.js"
+    "static/js/main.f35a622c.js"
   ]
 }
