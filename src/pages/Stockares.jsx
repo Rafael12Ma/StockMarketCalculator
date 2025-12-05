@@ -1,8 +1,5 @@
 import StocksCard from "./StocksCard";
 import NewStockLinks from "./NewStockLink";
-import { useQuery } from "@tanstack/react-query";
-import { fetchStocks } from "../util/http";
-import { Atom } from "react-loading-indicators";
 import { useStocksQuery } from "../hooks/useStockQuery";
 import LoadingQuery from "../components/LoadingQuery";
 

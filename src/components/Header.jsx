@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import imagelogo from "../assets/image.png";
 import NewTask from "./NewTask";
 import Stocks from "./Stocks";
